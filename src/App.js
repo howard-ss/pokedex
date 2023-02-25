@@ -57,19 +57,21 @@ import CaughtPokemon from "./CaughtPokemon";
 //   );
 // };
 
-//const abilities = ["Anticipation", "Adaptability", "Run-Away"];
+const abilities = ["Anticipation", "Adaptability", "Run-Away"];
+
+const date = new Date().toLocaleDateString();
 
 function App (){
   return (
-   <div>
-  {/* //  <header>
+    <div>
+      {/* //  <header>
   //   <h1>Welcome to the Pokedex</h1>
   //   <img  src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/016.png"></img>
   //  </header> */}
-  <Logo appName="Pokedex"/>
-  <BestPokemon />
-  <CaughtPokemon />
-   </div>
+      <Logo appName="Pokedex" />
+      <BestPokemon pokemonAbility ={abilities}/>
+      <CaughtPokemon pokemonDate = {date} />
+    </div>
   );
 }
 
