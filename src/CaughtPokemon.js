@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 
 const CaughtPokemon = (props) => {
   // const date = new Date().toLocaleDateString();
