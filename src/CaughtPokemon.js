@@ -2,26 +2,42 @@ import React, { useState } from "react";
 
 const randomData = ["Pikachu", "Butterfree", "Ditto","Chore"];
 
-const CaughtPokemon = () => {
+const CaughtPokemon = (props) => {
   //const date = new Date().toLocaleDateString();
   const [list, setList] = useState([]);
   const [caught, setCaught] = useState(0);
+  const [pokemonNameInput, setPokemonNameInput] = useState("");
 
   function catchPokemon() {
     setCaught((prevCaught) => prevCaught + 1);
+
     const randomIndex = Math.floor(Math.random() * list.length);
     const randomValue = randomData[randomIndex];
     setList(list.concat(randomValue));
+
+    if(pokemonNameInput === ""){
+      return;
+    }
+
+    setCaught (caught.concat(pokemonNameInput));
+    setPokemonNameInput("");
   }
+
+  function handleInputChange (event){
+    console.log(event.target.value);
+    setPokemonNameInput(event.target.value);
+  }
+
   return (
     <>
-      {/* <p>Caught {caught.length} Pokemon on {props.pokemonDate}</p>
-      {caught.map ((item,index)=>{
-        return <li key={index}>{item}</li>;
-              })}
-      <button onClick={catchPokemon}>catch Pokemon</button> */}
+        <input
+         type="text"
+         value={pokemonNameInput}
+         onChange={handleInputChange}
+        />
+
        <button onClick={catchPokemon}> catch pokemon </button><br></br>
-        caught {caught} Pokemon on
+        caught {caught.length} Pokemon on {props.pokemonDate}
       {/* <button onClick={addToList}>catch Pokemon: </button> */}
       {list.map((item, index) => {
         return <li key={index}>{item}</li>;
